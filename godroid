@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  echo "Godroid Tool"
+  phonegap run android --verbose --device
+elif [ "$1" = "-c" ]; then
+  echo "Godroid Tool - Removing android"
+  phonegap platform rm android
+  phonegap run android --verbose --device
+elif [ "$1" = "-w" ]; then
+  echo "Godroid Tool - Compiling with Crosswalk"
+  phonegap plugin rm cordova-plugin-crosswalk-webview
+  phonegap plugin add cordova-plugin-crosswalk-webview
+  phonegap platform rm android
+  phonegap run android --verbose --device
+elif [ "$1" = "-w-old" ]; then
+  echo "Godroid Tool - Compiling with Crosswalk old version (1.8.0): Compatible with android version 15"
+  phonegap plugin rm cordova-plugin-crosswalk-webview
+  phonegap plugin add cordova-plugin-crosswalk-webview@1.8.0
+  phonegap platform rm android
+  phonegap run android --verbose --device
+else
+  echo "Use valid commands"
+fi

@@ -10,21 +10,25 @@ Para instalar o projeto basta criar um link simbólico do script para a pasta `/
 
 Com o godroid é possível compilar um projeto normalmente, ou compilar para uma versão que necessita do Crosswalk.
 
-**Compilar normalmente:**
+**Compila normalmente:**
 
     $ godroid
 
-**Compilar versão para Crosswalk:**
+**Compila limpando a pasta android:**
+
+    $ godroid -clean
+
+**Compila versão para Crosswalk:**
 
     $ godroid -walk
 
-**Compilar versão para Crosswalk v1.8.0, última versão com suporte para android 15:**
+**Compila versão para Crosswalk v1.8.0, última versão com suporte para android 15:**
 
     $ godroid -walk-old
 
-**Retornar para versão sem Crosswalk:**
+**Remove Crosswalk:**
 
-    $ godroid -clean
+    $ godroid -walk-remove
 
 ## Licença
 

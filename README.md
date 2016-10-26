@@ -4,7 +4,7 @@ Script para compilar projetos em Phonegap/Cordova com gerenciamento de versão d
 
 ## Instalação
 
-Para instalar o projeto basta criar um link simbólico do script para a pasta `/usr/bin`.
+Para instalar o projeto basta criar um link simbólico do script para a pasta `/usr/bin`. Lembrar de dar permissões de execução para o usuário.
 
 ## Utilização
 

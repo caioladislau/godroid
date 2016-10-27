@@ -27,3 +27,5 @@ elif [ "$1" = "-walk-remove" ]; then
 else
   echo "Use valid commands"
 fi
+
+exit 0

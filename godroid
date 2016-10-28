@@ -24,6 +24,13 @@ elif [ "$1" = "-walk-remove" ]; then
   phonegap plugin rm cordova-plugin-crosswalk-webview
   phonegap platform rm android
   phonegap run android --verbose --device
+elif [ "$1" = "-help" ]; then
+  echo "Godroid Tool"
+  echo "Use the comand 'godroid' to compile the app. You can use arguments like:"
+  echo "  -clean       Clean the project to reinstall plugins"
+  echo "  -walk        Compile the project with lastest Crosswalk plugin"
+  echo "  -walk-old    Compile the project with Crosswalk plugin v1.8.0, compatible with android 15"
+  echo "  -walk-remove Remove Crosswalk from project"
 else
   echo "Use valid commands"
 fi

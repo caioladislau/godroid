@@ -1,4 +1,5 @@
 # Godroid
+[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/caioladislau/godroid)
 
 Script para compilar projetos em Phonegap/Cordova com gerenciamento de versão do [Crosswalk Project](https://crosswalk-project.org/).
 

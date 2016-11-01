@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -eq 0 ]; then
-  echo "Godroid Tool"
+  echo "Godroid Tool v2.0.1"
   phonegap run android --verbose --device
 elif [ "$1" = "-clean" ]; then
   echo "Godroid Tool - Removing android"
@@ -14,7 +14,7 @@ elif [ "$1" = "-walk" ]; then
   phonegap platform rm android
   phonegap run android --verbose --device
 elif [ "$1" = "-walk-old" ]; then
-  echo "Godroid Tool - Compiling with Crosswalk old version (1.8.0): Compatible with android version 15"
+  echo "Godroid Tool - Compiling with Crosswalk old version (1.8.0): Compatible with android version 15+"
   phonegap plugin rm cordova-plugin-crosswalk-webview
   phonegap plugin add cordova-plugin-crosswalk-webview@1.8.0
   phonegap platform rm android
@@ -29,7 +29,7 @@ elif [ "$1" = "-help" ]; then
   echo "Use the comand 'godroid' to compile the app. You can use arguments like:"
   echo "  -clean       Clean the project to reinstall plugins"
   echo "  -walk        Compile the project with lastest Crosswalk plugin"
-  echo "  -walk-old    Compile the project with Crosswalk plugin v1.8.0, compatible with android 15"
+  echo "  -walk-old    Compile the project with Crosswalk plugin v1.8.0, compatible with android 15+"
   echo "  -walk-remove Remove Crosswalk from project"
 else
   echo "Use valid commands"

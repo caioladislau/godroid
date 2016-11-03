@@ -33,4 +33,4 @@ Com o godroid é possível compilar um projeto normalmente, ou compilar para uma
 
 ## Licença
 
-O godroid é um script open-source com licença [MIT](https://opensource.org/licenses/MIT).
+O godroid é open-source com licença [MIT](https://opensource.org/licenses/MIT).

@@ -1,38 +1,65 @@
 #!/bin/bash
 
-if [ $# -eq 0 ]; then
-  echo "Godroid Tool"
-  phonegap run android --verbose --device
-elif [ "$1" = "-clean" ]; then
-  echo "Godroid Tool - Removing android"
-  phonegap platform rm android
-  phonegap run android --verbose --device
-elif [ "$1" = "-walk" ]; then
-  echo "Godroid Tool - Compiling with Crosswalk"
-  phonegap plugin rm cordova-plugin-crosswalk-webview
-  phonegap plugin add cordova-plugin-crosswalk-webview
-  phonegap platform rm android
-  phonegap run android --verbose --device
-elif [ "$1" = "-walk-old" ]; then
-  echo "Godroid Tool - Compiling with Crosswalk old version (1.8.0): Compatible with android version 15+"
-  phonegap plugin rm cordova-plugin-crosswalk-webview
-  phonegap plugin add cordova-plugin-crosswalk-webview@1.8.0
-  phonegap platform rm android
-  phonegap run android --verbose --device
-elif [ "$1" = "-walk-remove" ]; then
-  echo "Godroid Tool - Removing Crosswalk"
-  phonegap plugin rm cordova-plugin-crosswalk-webview
-  phonegap platform rm android
-  phonegap run android --verbose --device
-elif [ "$1" = "-help" ]; then
-  echo "Godroid Tool"
-  echo "Use the comand 'godroid' to compile the app. You can use arguments like:"
-  echo "  -clean       Clean the project to reinstall plugins"
-  echo "  -walk        Compile the project with lastest Crosswalk plugin"
-  echo "  -walk-old    Compile the project with Crosswalk plugin v1.8.0, compatible with android 15+"
-  echo "  -walk-remove Remove Crosswalk from project"
-else
-  echo "Use valid commands"
-fi
+print_help ()
+{
+  printf "\nUsage: godroid [-o|--option] [-h|--help]\n"
+  printf "\n\t -c    --clean        \t Clean the project to reinstall plugins"
+  printf "\n\t -w    --walk         \t Compile the project with lastest Crosswalk plugin"
+  printf "\n\t -w-o  --walk-old     \t Compile the project with Crosswalk plugin v1.8.0, compatible with android 15"
+  printf "\n\t -w-r  --walk-remove  \t Remove Crosswalk from project"
+  printf "\n\t -g    --gulp         \t Execute gulp before compile"
+  printf "\n\n"
+}
+
+printf "\nGodroid Tool v3.0.0\n"
+
+for i in "$@"
+do
+case $i in
+
+    -c|--clean)
+      printf "\nRemoving android\n"
+      phonegap platform rm android
+    ;;
+
+    -w|--walk)
+      printf "\nCompiling with Crosswalk\n"
+      phonegap plugin rm cordova-plugin-crosswalk-webview
+      phonegap plugin add cordova-plugin-crosswalk-webview
+      phonegap platform rm android
+    ;;
+
+    -w-o|--walk-old)
+      printf "\nCompiling with Crosswalk old version (1.8.0): Compatible with android version 15\n"
+      phonegap plugin rm cordova-plugin-crosswalk-webview
+      phonegap plugin add cordova-plugin-crosswalk-webview@1.8.0
+      phonegap platform rm android
+    ;;
+
+    -w-r|--walk-remove)
+      printf "\nRemoving Crosswalk\n"
+      phonegap plugin rm cordova-plugin-crosswalk-webview
+      phonegap platform rm android
+    ;;
+
+    -g|--gulp)
+      gulp
+    ;;
+
+    -h|--help)
+      print_help
+      exit 0
+    ;;
+
+    *)
+      printf "\nUse valid commands\n"
+      print_help
+      exit 0
+    ;;
+esac
+done
+
+printf "\nCompiling ...\n"
+phonegap run android --verbose --device
 
 exit 0
